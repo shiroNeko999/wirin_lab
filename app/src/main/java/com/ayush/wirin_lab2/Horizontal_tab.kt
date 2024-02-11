@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -32,54 +33,57 @@ import com.google.accompanist.pager.*
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun TabBar() {
-    val pagerState = rememberPagerState()
-    val pages = listOf("Controls", "Map", "Security", "Car Stats")
+   Box(modifier = Modifier.fillMaxSize().height(500.dp).padding(0.dp,260.dp,0.dp,0.dp)) {
+       val pagerState = rememberPagerState()
+       val pages = listOf("Controls", "Map", "Security", "Car Stats")
 
 // Map page titles to their corresponding icon resource IDs
-    val pageIcons = mapOf(
-        "Controls" to R.drawable.ic_outline_electric_car_24,
-        "Map" to R.drawable.ic_baseline_location_on_24,
-        "Security" to R.drawable.ic_baseline_lock_24,
-        "Car Stats" to R.drawable.ic_baseline_electric_bolt_24
+       val pageIcons = mapOf(
+           "Controls" to R.drawable.ic_baseline_directions_car_24,
+           "Map" to R.drawable.ic_baseline_location_on_24,
+           "Security" to R.drawable.ic_baseline_lock_24,
+           "Car Stats" to R.drawable.ic_baseline_electric_bolt_24
 
-    )
+       )
 
-    val indicator = @Composable { tabPositions: List<TabPosition> ->
-        CustomIndicator(tabPositions, pagerState)
-    }
+       val indicator = @Composable { tabPositions: List<TabPosition> ->
+           CustomIndicator(tabPositions, pagerState)
+       }
 
-    ScrollableTabRow(
-        modifier = Modifier.height(50.dp),
-        backgroundColor = Color(0XFF818181),
-        selectedTabIndex = pagerState.currentPage,
-        indicator = indicator
-    ) {
-        pages.forEachIndexed { index, title ->
-            Tab(
-                modifier = Modifier.zIndex(6f),
-                text = { Text(text = title, color = Color.Black) },
-                icon = {
-                    Icon(
-                        painter = painterResource(id = pageIcons[title] ?: R.drawable.ic_baseline_visibility_24),
-                        contentDescription = title
-                    )
-                },
-                selected = pagerState.currentPage == index,
-                onClick = { /* TODO */ },
-            )
-        }
-    }
+       ScrollableTabRow(
+           modifier = Modifier.height(50.dp),
+           backgroundColor = Color(0XFFfafafa),
+           selectedTabIndex = pagerState.currentPage,
+           indicator = indicator
+       ) {
+           pages.forEachIndexed { index, title ->
+               Tab(
+                   modifier = Modifier.zIndex(6f),
+                   text = { Text(text = title, color = Color.Black,fontFamily = FontFamily.Monospace) },
+                   icon = {
+                       Icon(
+                           painter = painterResource(
+                               id = pageIcons[title] ?: R.drawable.ic_baseline_visibility_24
+                           ),
+                           contentDescription = title
+                       )
+                   },
+                   selected = pagerState.currentPage == index,
+                   onClick = { /* TODO */ },
+               )
+           }
+       }
 
-    HorizontalPager(
-        modifier = Modifier.fillMaxSize(),
-        count = pages.size,
-        state = pagerState,
-    ) { page ->
-        Box(Modifier.fillMaxSize()) {
-            Text(modifier = Modifier.align(Alignment.Center), text = "Page $page")
-        }
-    }
-
+       HorizontalPager(
+           modifier = Modifier.fillMaxSize(),
+           count = pages.size,
+           state = pagerState,
+       ) { page ->
+           Box(Modifier.fillMaxSize()) {
+               Text(modifier = Modifier.align(Alignment.Center), text = "Page $page")
+           }
+       }
+   }
 }
 
 @OptIn(ExperimentalPagerApi::class)
@@ -115,9 +119,10 @@ private fun CustomIndicator(tabPositions: List<TabPosition>, pagerState: PagerSt
             .offset(x = indicatorStart)
             .wrapContentSize(align = Alignment.BottomStart)
             .width(indicatorEnd - indicatorStart)
+
             .padding(2.dp)
             .fillMaxSize()
-            .background(color = Color(0xFFFAFAFA), RoundedCornerShape(50))
+            .background(color = Color(0xFFf2f2f2), RoundedCornerShape(50))
             .border(BorderStroke(2.dp, Color(0xFFFFFFFF)), RoundedCornerShape(50))
             .zIndex(1f)
     )
