@@ -24,16 +24,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.google.accompanist.pager.*
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun TabBar() {
-   Box(modifier = Modifier.fillMaxSize().height(500.dp).padding(0.dp,260.dp,0.dp,0.dp)) {
+
        val pagerState = rememberPagerState()
        val pages = listOf("Controls", "Map", "Security", "Car Stats")
 
@@ -79,12 +81,37 @@ fun TabBar() {
            count = pages.size,
            state = pagerState,
        ) { page ->
-           Box(Modifier.fillMaxSize()) {
+           if(page==3){
+           Box(
+               Modifier
+                   .fillMaxWidth()
+                   .background(color = Color(0XFF212121))) {
                Text(modifier = Modifier.align(Alignment.Center), text = "Page $page")
+               LazyListt()
+           }
+           }
+           if(page==0){
+               Box(
+                   Modifier
+                       .fillMaxWidth()
+                       .background(color = Color(0XFF212121))) {
+
+                   LazyList2()
+               }
+           }
+           else if (page==1 || page == 2){
+               Box(
+                   Modifier
+                       .fillMaxSize()
+                       .background(color = Color(0XFF212121))) {
+
+                   Text(text = "COMING SOON.....", fontWeight = FontWeight.ExtraBold, fontSize = 50.sp, color = Color.White,
+                       fontFamily = FontFamily.Monospace)
+               }
            }
        }
    }
-}
+
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable

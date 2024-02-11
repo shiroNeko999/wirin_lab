@@ -13,6 +13,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.rememberLottieComposition
 
 @Composable
 fun HomeUp() {
@@ -20,22 +23,9 @@ fun HomeUp() {
         modifier = Modifier
             .fillMaxWidth()
             .background(color = Color(0XFF212121))
-    ) {
+    )
+
         Column() {
-            Row(
-                modifier = Modifier
-                    .padding(10.dp)
-                    .fillMaxWidth()
-            )
-            {
-                Text(
-                    fontWeight = FontWeight.ExtraBold,
-                    text = "WIPOD",
-                    color = Color(0XFFfafafa),
-                    fontFamily = FontFamily.Monospace,
-                    fontSize = 30.sp
-                )
-            }
             Row(modifier = Modifier.padding(6.dp)) {
                Icon(painter = painterResource(id = R.drawable.ic_outline_electric_car_24), contentDescription ="Car",modifier = Modifier.padding(0.dp) )
                 Text(text = "365 km", fontFamily = FontFamily.Monospace, fontWeight = FontWeight.Bold,color = Color(0XFF818181), modifier = Modifier.padding(10.dp,0.dp))
@@ -43,11 +33,12 @@ fun HomeUp() {
             }
             Text(text = "Parked", color = Color(0XFF818181), modifier = Modifier.padding(10.dp,2.dp), fontFamily = FontFamily.Monospace, fontWeight = FontWeight.Bold)
             Image(painter = painterResource(id = R.drawable.tesla3), contentDescription ="Car image",
-                modifier = Modifier.padding(60.dp,10.dp)
+                modifier = Modifier
+                    .padding(60.dp, 10.dp)
                     .fillMaxWidth(0.85f)
             )
 
         }
     }
-}
+
 
