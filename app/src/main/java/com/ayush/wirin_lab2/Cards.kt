@@ -24,11 +24,11 @@ fun Cards()
         modifier = Modifier
             .height(85.dp)
             .fillMaxWidth()
-
-            .padding(5.dp),
+            .padding(5.dp)
+            .background(color = Color(0XFF281E4D)),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0XFF281E4D))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Control Unit Status",
@@ -53,9 +53,9 @@ fun Cards()
     ) {
         Row(modifier = Modifier.background(color = Color(0XFF818181))) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
+                painter = painterResource(id = R.drawable.car),
                 contentDescription = "Control Settings",
-                modifier = Modifier.padding(5.dp)
+                modifier = Modifier.padding(5.dp).size(24.dp), tint = Color.Unspecified
             )
             Text(
                 color = Color.White, text = "Control Settings", fontSize = 20.sp,fontFamily = FontFamily.Monospace,
