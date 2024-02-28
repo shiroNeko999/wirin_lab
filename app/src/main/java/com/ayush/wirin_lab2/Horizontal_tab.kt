@@ -45,7 +45,7 @@ fun TabBar() {
 // Map page titles to their corresponding icon resource IDs
        val pageIcons = mapOf(
            "Controls" to R.drawable.ic_baseline_directions_car_24,
-           "Map" to R.drawable.location,
+           "Map" to R.drawable.ic_baseline_location_on_24,
            "Music" to R.drawable.music,
            "Car Stats" to R.drawable.ic_baseline_electric_bolt_24
 
@@ -163,10 +163,10 @@ private fun CustomIndicator(tabPositions: List<TabPosition>, pagerState: PagerSt
             .wrapContentSize(align = Alignment.BottomStart)
             .width(indicatorEnd - indicatorStart)
 
-            .padding(2.dp)
+            .padding(0.dp)
             .fillMaxSize()
-            .background(color = Color(0xFF8984D1), RoundedCornerShape(50))
-            .border(BorderStroke(2.dp, Color(0xFF8984D1)), RoundedCornerShape(50))
+            .background(color = Color(0xFF030303), RoundedCornerShape(50))
+            .border(BorderStroke(2.dp, Color(0xFFFCFCFC)), RoundedCornerShape(50))
             .zIndex(1f)
     )
 }

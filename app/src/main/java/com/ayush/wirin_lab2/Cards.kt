@@ -19,16 +19,20 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun Cards()
 {var context = LocalContext.current
+    val gradientColors = listOf(
+        Color(0XFF200D40),
+        Color(0X876037A2)
+    )
 
     Card(onClick = { Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show() },
         modifier = Modifier
             .height(85.dp)
             .fillMaxWidth()
             .padding(5.dp)
-            .background(color = Color(0XFF281E4D)),
+            .background(color = Color(0xFF000000)),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF281E4D))) {
+        Row(modifier = Modifier.background(color = Color(0xFF000000))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Control Unit Status",
@@ -51,7 +55,9 @@ fun Cards()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(
+            color = Color.Black
+        )) {
             Icon(
                 painter = painterResource(id = R.drawable.car),
                 contentDescription = "Control Settings",
@@ -74,7 +80,7 @@ fun Cards()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0xFF01030A))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Vehicle Status",
@@ -97,7 +103,7 @@ fun Cards()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0xFF000000))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Table Status",
@@ -120,7 +126,7 @@ fun Cards()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0xFF000000))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Controls",
@@ -143,7 +149,7 @@ fun Cards()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0xFF000000))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Controls",
@@ -166,7 +172,7 @@ fun Cards()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0xFF000000))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Controls",
@@ -189,7 +195,7 @@ fun Cards()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0xFF000000))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Controls",

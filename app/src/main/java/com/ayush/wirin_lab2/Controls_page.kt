@@ -32,7 +32,7 @@ fun Controls_page()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0xFF030101))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Control Unit Status",
@@ -55,7 +55,7 @@ fun Controls_page()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0xFF000000))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Control Settings",
@@ -78,7 +78,7 @@ fun Controls_page()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0xFF000000))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Vehicle Status",
@@ -101,7 +101,7 @@ fun Controls_page()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0xFF090606))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Vehicle Status",
@@ -124,7 +124,7 @@ fun Controls_page()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0xFF0A0505))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Vehicle Status",
@@ -147,7 +147,7 @@ fun Controls_page()
             .padding(5.dp),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+        Row(modifier = Modifier.background(color = Color(0xFF050202))) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Vehicle Status",
