@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "481513748811",
+    "firebase_url": "https://wipod-talkbot-default-rtdb.firebaseio.com",
+    "project_id": "wipod-talkbot",
+    "storage_bucket": "wipod-talkbot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481513748811:android:11426a90bd604e56c6d0ce",
+        "android_client_info": {
+          "package_name": "com.ayush.work"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk2zyiG_mP5XWsvoNXH2j-n5DH2qhim0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481513748811:android:0fd47e8503b54bfec6d0ce",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk2zyiG_mP5XWsvoNXH2j-n5DH2qhim0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
