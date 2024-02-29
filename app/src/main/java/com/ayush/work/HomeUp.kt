@@ -1,4 +1,4 @@
-package com.ayush.wirin_lab2
+package com.ayush.work
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

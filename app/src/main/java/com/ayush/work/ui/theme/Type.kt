@@ -1,4 +1,4 @@
-package com.ayush.wirin_lab2.ui.theme
+package com.ayush.work.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

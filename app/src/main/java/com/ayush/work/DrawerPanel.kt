@@ -1,4 +1,4 @@
-package com.ayush.wirin_lab2
+package com.ayush.work
 
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -19,7 +19,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

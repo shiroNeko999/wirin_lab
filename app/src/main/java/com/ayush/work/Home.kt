@@ -1,12 +1,10 @@
-package com.ayush.wirin_lab2
+package com.ayush.work
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import com.ayush.wirin_lab2.ui.theme.Mytheme
 
 @Composable
 fun Home()

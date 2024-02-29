@@ -1,4 +1,4 @@
-package com.ayush.wirin_lab2
+package com.ayush.work
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

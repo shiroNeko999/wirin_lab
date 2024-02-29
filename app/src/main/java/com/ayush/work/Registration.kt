@@ -1,4 +1,4 @@
-package com.ayush.wirin_lab2
+package com.ayush.work
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
@@ -10,7 +10,6 @@ import androidx.compose.material.icons.filled.Face
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.autofill.AutofillType
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
