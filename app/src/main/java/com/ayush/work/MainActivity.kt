@@ -46,6 +46,7 @@ class MainActivity : ComponentActivity() {
 
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Write a message to the database
@@ -71,6 +72,7 @@ class MainActivity : ComponentActivity() {
             .child("Control Settings").child("Low Level Control Mode")
         val myRef9 = database.getReference("Realtime_DATA")
             .child("Vehicle Status").child("VehicleDoors").child("Door Status")
+
 
 
         myRef3.addValueEventListener(object: ValueEventListener {
@@ -195,6 +197,8 @@ class MainActivity : ComponentActivity() {
             }
 
         })
+
+
         setContent {
             Home()
 

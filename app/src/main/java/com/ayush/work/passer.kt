@@ -7,8 +7,9 @@ object  MyClass{
     var steering:String= ""
     var ac :String=""
     var c_mode:String = ""
-
+    var distance:String =""
     var door:String = ""
+    var park:String = ""
 
 
 }

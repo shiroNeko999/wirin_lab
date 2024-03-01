@@ -26,7 +26,7 @@ fun Controls_page()
 {var context = LocalContext.current
     Card(onClick = { Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show() },
         modifier = Modifier
-            .height(85.dp)
+            .height(150.dp)
             .fillMaxWidth()
 
             .padding(5.dp),
@@ -36,15 +36,20 @@ fun Controls_page()
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
                 contentDescription = "Control Unit Status",
-                modifier = Modifier.padding(5.dp)
+                modifier = Modifier.padding(20.dp,20.dp), tint = Color.White
             )
             Text(
                 color = Color.White, text = "LIGHT", fontSize = 20.sp,fontFamily = FontFamily.Monospace,
 
-                modifier = Modifier.padding(20.dp, 5.dp)
+                modifier = Modifier.padding(20.dp,20.dp)
             )
 
+
+
+
+
         }
+
 
     }
     Card(onClick = { Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show() },
