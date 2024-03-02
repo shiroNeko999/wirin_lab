@@ -48,39 +48,37 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
-
-class LoginActivity : ComponentActivity() {
+class SignupActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
 
+                }
             }
         }
-    }
-
 
 @Composable
-fun loginscreen(){
+fun signupscreen(){
     Column(modifier= Modifier
         .fillMaxSize()
         .background(Color.Black)) {
-        DesignTop()
-        DesignBottom()
+        DesignTop1()
+        DesignBottom1()
     }
 }
 
+
 @Composable
-fun DesignTop(){
+fun DesignTop1(){
     Box(modifier= Modifier
         .navigationBarsPadding()
-        .background(Color.Black), contentAlignment= Alignment.Center) {
+        .background(Color.Black)) {
 
         Image(
-            painter = painterResource(id = R.drawable.subtract),
+            painter = painterResource(id = R.drawable.rectangle_3),
             contentDescription = null, // Provide a meaningful content description
-            modifier = Modifier.fillMaxWidth(),
-            contentScale = ContentScale.FillBounds // Adjust content scale as needed
+            modifier = Modifier.scale(1.5f),
+            contentScale = ContentScale.Inside // Adjust content scale as needed
         )
         Image(
             painter = painterResource(id = R.drawable.riyalwipod),
@@ -90,51 +88,52 @@ fun DesignTop(){
                 .align(Alignment.TopCenter)
                 .scale(0.65f)
                 .padding(top = 70.dp),
-            contentScale = ContentScale.FillBounds // Adjust content scale as needed
+            contentScale = ContentScale.Inside // Adjust content scale as needed
         )
-        Text(text="Login",
+
+    }
+}
+
+@Composable
+fun DesignBottom1(){
+    Column(modifier= Modifier
+        .background(Color.Black)
+        .fillMaxSize()
+        .padding(top = 32.dp)) {
+        var textState by remember { mutableStateOf(TextFieldValue()) }
+        var textState2 by remember { mutableStateOf(TextFieldValue()) }
+
+        val onGoogleSignupClick: () -> Unit = {
+            //Sign in vala function yaha daalna
+            var hey=0
+            hey+=1
+
+        }
+        val onMetaSignupClick: () -> Unit = {
+            //Sign in vala function yaha daalna
+            var hey=0
+            hey+=1
+        }
+        val onSignupClick: () -> Unit = {
+            //login hone pr ka logic
+        }
+
+        val onSigninClick: ()-> Unit = {
+
+            //create account pr click krne pr kya dikhega
+
+        }
+
+        Text(text="Create your Account",
             color=Color.White,
             fontFamily = FontFamily.SansSerif,
             fontSize = 38.sp,
             fontStyle = FontStyle.Normal,
             fontWeight = FontWeight.ExtraBold,
             modifier= Modifier
-                .padding(0.dp)
-                .align(Alignment.BottomCenter),
-            )
+                .padding(24.dp).align(Alignment.Start)
+        )
 
-    }
-}
-
-@Composable
-fun DesignBottom(){
-    Column(modifier= Modifier
-        .background(Color.Black)
-        .fillMaxSize()
-        .padding(top = 32.dp)) {
-        var textState by remember { mutableStateOf(TextFieldValue()) }
-        var textState2 by remember { mutableStateOf(TextFieldValue())}
-
-        val onGoogleSignInClick: () -> Unit = {
-            //Sign in vala function yaha daalna
-            var hey=0
-            hey+=1
-
-        }
-        val onMetaSignInClick: () -> Unit = {
-            //Sign in vala function yaha daalna
-            var hey=0
-            hey+=1
-        }
-        val onLoginClick: () -> Unit = {
-            //login hone pr ka logic
-        }
-
-        val onCreateAccountClick: ()-> Unit = {
-
-            //create account pr click krne pr kya dikhega
-
-        }
         TextField(
             value = textState,
             onValueChange = { textState = it },
@@ -150,7 +149,7 @@ fun DesignBottom(){
                 focusedIndicatorColor = Color.Black,
                 focusedLabelColor = Color.Black,
                 unfocusedLabelColor = Color.Gray,
-        ))
+            ))
 
         TextField(
             value = textState2,
@@ -170,28 +169,30 @@ fun DesignBottom(){
                 unfocusedLabelColor = Color.Gray,
             ))
 
-        Text(text="Forgot Password?", color=Color.White, modifier= Modifier
-            .padding(end = 25.dp, top = 15.dp)
-            .align(Alignment.End))
-
         Spacer(modifier = Modifier.padding(13.dp))
 
-        LoginButton (onClick = onLoginClick)
+        SignupButton (onClick = onSignupClick)
+
+        Spacer(modifier = Modifier.padding(8.dp))
+
+        Text(text="Or Sign Up with", color=Color.White, modifier= Modifier
+            .padding(end = 25.dp, top = 15.dp)
+            .align(Alignment.CenterHorizontally))
 
         Spacer(modifier = Modifier.padding(8.dp))
 
         Row(modifier= Modifier
             .fillMaxWidth()
             .padding(10.dp), horizontalArrangement = Arrangement.Absolute.SpaceBetween) {
-            GoogleSignInButton(onClick = onGoogleSignInClick, modifier = Modifier.weight(0.75f))
-            MetaSignInButton(onClick = onMetaSignInClick, modifier= Modifier.weight(1f))
+            GoogleSignupButton(onClick = onGoogleSignupClick, modifier = Modifier.weight(0.75f))
+            MetaSignupButton(onClick = onMetaSignupClick, modifier= Modifier.weight(1f))
         }
 
 
 
 
         Row(modifier= Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
-            CreateAccountText(onCreateAccountClick= onCreateAccountClick)
+            LoginAccountText(onSigninClick= onSigninClick)
         }
 
 
@@ -203,14 +204,14 @@ fun DesignBottom(){
 }
 
 @Composable
-fun CreateAccountText(onCreateAccountClick: () -> Unit) {
+fun LoginAccountText(onSigninClick: () -> Unit) {
     var textColor by remember { mutableStateOf(Color.Gray) }
 
     ClickableText(
-        text = AnnotatedString("Don't have an account? Create one now"),
+        text = AnnotatedString("Already have an account? Login now"),
         onClick = {
             textColor = Color.White // Change text color on click
-            onCreateAccountClick()
+            onSigninClick()
         },
         style = MaterialTheme.typography.body1.copy(color = textColor),
         modifier = Modifier.padding(8.dp)
@@ -219,7 +220,7 @@ fun CreateAccountText(onCreateAccountClick: () -> Unit) {
 
 
 @Composable
-fun GoogleSignInButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun GoogleSignupButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
@@ -249,7 +250,7 @@ fun GoogleSignInButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun LoginButton(onClick: () -> Unit) {
+fun SignupButton(onClick: () -> Unit) {
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
@@ -262,13 +263,13 @@ fun LoginButton(onClick: () -> Unit) {
             .padding(horizontal = 24.dp)
     ) {
         Text(
-            text = "Login",
+            text = "Create My Account",
             style = MaterialTheme.typography.button
         )
     }
 }
 @Composable
-fun MetaSignInButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun MetaSignupButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
@@ -300,12 +301,6 @@ fun MetaSignInButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    loginscreen()
-
-}
-@Preview(showBackground = true)
-@Composable
-fun lol(){
-    DesignTop()
+fun GreetingPreview2() {
+    signupscreen()
 }
