@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import com.ayush.wirin_lab2.R
+import com.ayush.work.R
 import com.ayush.work.ui.theme.Mytheme
 
 

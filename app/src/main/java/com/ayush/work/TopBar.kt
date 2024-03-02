@@ -24,7 +24,7 @@ fun TopBar(scaffoldState: ScaffoldState,scope: CoroutineScope)
 {
     Row(modifier = Modifier.background(color = Color.White)
         .fillMaxWidth()) {
-        IconButton(onClick = {scope?.launch { scaffoldState?.drawerState.open() }}) {
+        IconButton(onClick = {scope?.launch { scaffoldState?.drawerState?.open() }}) {
             Image(painter = painterResource(id = R.drawable.ic_baseline_menu_24),
                 contentDescription = "Hamburger menu icon",
                 modifier = Modifier.padding(horizontal = 5.dp))
