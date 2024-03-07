@@ -1,14 +1,18 @@
 package com.ayush.work
 
-import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.ScaffoldState
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.runtime.Composable
@@ -19,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ayush.work.ui.theme.ProfileBox
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -26,53 +31,55 @@ import kotlinx.coroutines.launch
 @Composable
 fun DrawerPanel(scaffoldState: ScaffoldState,scope: CoroutineScope)
 { var context = LocalContext.current
-    LazyColumn{
-        item {   Card(onClick = { Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show() },
-            modifier = Modifier
-                .height(85.dp)
-                .fillMaxWidth()
+    var wow=0
+    LazyColumn(modifier=Modifier.fillMaxSize().background(
+        brush = GradientBackgroundBrush(
+            isVerticalGradient = true,
+            colors = listOf(
 
-                .padding(5.dp),
-            shape = RoundedCornerShape(10.dp)
-        ) {
-            Row(modifier = Modifier.background(color = Color(0XFF818181))) {
+
+                Color(0xFF111111),
+                Color(0xFF000000),
+                Color(0xE220192E),
+            )
+        ))){
+        item{ ProfileBox(userName = "Ayush", modifier=Modifier.padding(16.dp))}
+        item { Row(modifier = Modifier.fillMaxWidth()
+            .background(color = Color.Transparent)
+            .clickable(onClick = { wow++ })
+            .padding(16.dp)) {
+                Spacer(modifier = Modifier.padding(10.dp))
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
+                    painter = painterResource(id = R.drawable.baseline_edit_note_24),
                     contentDescription = "Controls",
-                    modifier = Modifier.padding(5.dp)
+                    modifier = Modifier.padding(5.dp),
+                    tint = Color.White
                 )
+                Spacer(modifier = Modifier.padding(10.dp))
                 Text(
-                    color = Color.White, text = "OBC", fontSize = 20.sp,fontFamily = FontFamily.Monospace,
-
+                    color = Color.White, text = "Edit Profile", fontSize = 20.sp,fontFamily = FontFamily.SansSerif,
                     modifier = Modifier.padding(20.dp, 5.dp)
                 )
-
             }
 
-        } }
+         }
 
-        item {   Card(onClick = { Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show() },
-            modifier = Modifier
-                .height(85.dp)
-                .fillMaxWidth()
-
-                .padding(5.dp),
-            shape = RoundedCornerShape(10.dp)
-        ) {
-            Row(modifier = Modifier.background(color = Color(0XFF818181))) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_baseline_directions_car_24),
-                    contentDescription = "Controls",
-                    modifier = Modifier.padding(5.dp)
-                )
-                Text(
-                    color = Color.White, text = "OBC", fontSize = 20.sp,fontFamily = FontFamily.Monospace,
-
-                    modifier = Modifier.padding(20.dp, 5.dp)
-                )
-
-            }
-
+        item {   Row(modifier = Modifier
+            .background(color = Color.Transparent).fillMaxWidth()
+            .clickable(onClick = { wow++ })
+            .padding(16.dp)) {
+            Spacer(modifier = Modifier.padding(10.dp))
+            Icon(
+                painter = painterResource(id = R.drawable.baseline_app_settings_alt_24),
+                contentDescription = "Controls",
+                modifier = Modifier.padding(5.dp),
+                tint = Color.White
+            )
+            Spacer(modifier = Modifier.padding(10.dp))
+            Text(
+                color = Color.White, text = "Settings", fontSize = 20.sp,fontFamily = FontFamily.SansSerif,
+                modifier = Modifier.padding(20.dp, 5.dp)
+            )
         } }
       }
     IconButton(onClick = { scope?.launch { scaffoldState?.drawerState?.close() } }) {
@@ -82,3 +89,4 @@ fun DrawerPanel(scaffoldState: ScaffoldState,scope: CoroutineScope)
 
 
 }
+
