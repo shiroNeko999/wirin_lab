@@ -201,8 +201,7 @@ class MainActivity : ComponentActivity() {
 
 
         setContent {
-loginscreen()
-
+            finalEditProfile()
         }
     }
 }
