@@ -17,14 +17,19 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -44,15 +49,17 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.firebase.auth.FirebaseAuth
 
 class SignupActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+            signupscreen()
                 }
             }
         }
@@ -62,8 +69,12 @@ fun signupscreen(){
     Column(modifier= Modifier
         .fillMaxSize()
         .background(Color.Black)) {
-        DesignTop1()
-        DesignBottom1()
+        LazyColumn{
+            item { DesignTop1()
+            DesignBottom1()}
+
+        }
+
     }
 }
 
@@ -96,12 +107,14 @@ fun DesignTop1(){
 
 @Composable
 fun DesignBottom1(){
+    var passwordVisible by remember { mutableStateOf(false) }
+
     Column(modifier= Modifier
         .background(Color.Black)
         .fillMaxSize()
         .padding(top = 32.dp)) {
-        var textState by remember { mutableStateOf(TextFieldValue()) }
-        var textState2 by remember { mutableStateOf(TextFieldValue()) }
+        var textState by remember { mutableStateOf("") }
+        var textState2 by remember { mutableStateOf("") }
 
         val onGoogleSignupClick: () -> Unit = {
             //Sign in vala function yaha daalna
@@ -116,11 +129,18 @@ fun DesignBottom1(){
         }
         val onSignupClick: () -> Unit = {
             //login hone pr ka logic
+            val email = textState
+            val password = textState2
+
+            // Call the sign-up function with email and password
+            signUpWithEmailAndPassword(email, password)
+
         }
 
         val onSigninClick: ()-> Unit = {
 
             //create account pr click krne pr kya dikhega
+
 
         }
 
@@ -131,16 +151,19 @@ fun DesignBottom1(){
             fontStyle = FontStyle.Normal,
             fontWeight = FontWeight.ExtraBold,
             modifier= Modifier
-                .padding(24.dp).align(Alignment.Start)
+                .padding(24.dp)
+                .align(Alignment.Start)
         )
 
         TextField(
             value = textState,
             onValueChange = { textState = it },
             label = { Text("Email") },
+            trailingIcon = {
+                Icon(Icons.Filled.Face, "", tint = Color.Gray)},
             modifier = Modifier
                 .padding(start = 24.dp, end = 24.dp, top = 24.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth(), shape = RoundedCornerShape(10.dp),
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor= Color.Black,
@@ -157,8 +180,22 @@ fun DesignBottom1(){
             label = { Text("Password") },
             modifier = Modifier
                 .padding(start = 24.dp, end = 24.dp, top = 35.dp)
-                .fillMaxWidth(),
-            visualTransformation = PasswordVisualTransformation(),
+                .fillMaxWidth(),shape = RoundedCornerShape(10.dp),
+            visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+            trailingIcon = {
+                val image = if (passwordVisible)
+                    R.drawable.ic_baseline_visibility_24
+                else  R.drawable.ic_baseline_visibility_off_24
+
+                // Localized description for accessibility services
+                val description = if (passwordVisible) "Hide password" else "Show password"
+
+                // Toggle button to hide or display password
+                IconButton(onClick = {passwordVisible = !passwordVisible}){
+                    Icon(painter = painterResource(id = image), contentDescription ="password eyes" )
+
+                }
+            },
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor= Color.Black,
@@ -252,7 +289,7 @@ fun GoogleSignupButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
 @Composable
 fun SignupButton(onClick: () -> Unit) {
     Button(
-        onClick = onClick,
+        onClick = onClick, shape = RoundedCornerShape(10.dp),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = Color(0xFF334155),
             contentColor = Color.White
@@ -303,4 +340,19 @@ fun MetaSignupButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview2() {
     signupscreen()
+}
+private fun signUpWithEmailAndPassword(email: String, password: String) {
+    val auth = FirebaseAuth.getInstance()
+    auth.createUserWithEmailAndPassword(email, password)
+        .addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                // Sign-up success
+                val user = auth.currentUser
+                // You can handle the signed-up user here
+            } else {
+                // Sign-up failed
+                val exception = task.exception
+                // You can handle the sign-up failure here
+            }
+        }
 }

@@ -33,6 +33,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.getValue
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlin.math.sign
 
 
 class MainActivity : ComponentActivity() {
@@ -200,7 +201,7 @@ class MainActivity : ComponentActivity() {
 
 
         setContent {
-            Home()
+loginscreen()
 
         }
     }
