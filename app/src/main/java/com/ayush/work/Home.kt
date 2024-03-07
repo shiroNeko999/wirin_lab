@@ -1,5 +1,6 @@
 package com.ayush.work
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.util.Log
 import androidx.compose.foundation.layout.Column
@@ -8,6 +9,7 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Home()
 {val scaffoldState= rememberScaffoldState()
@@ -23,7 +25,7 @@ fun Home()
         }
     ) {
 
-        Column() {
+        Column {
             HomeUp()
             TabBar()
         }

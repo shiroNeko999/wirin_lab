@@ -57,7 +57,7 @@ fun DrawerPanel(scaffoldState: ScaffoldState,scope: CoroutineScope)
                 )
                 Spacer(modifier = Modifier.padding(10.dp))
                 Text(
-                    color = Color.White, text = "Edit Profile", fontSize = 20.sp,fontFamily = FontFamily.SansSerif,
+                    color = Color.White, text = "Your Profile", fontSize = 20.sp,fontFamily = FontFamily.SansSerif,
                     modifier = Modifier.padding(20.dp, 5.dp)
                 )
             }
@@ -77,7 +77,7 @@ fun DrawerPanel(scaffoldState: ScaffoldState,scope: CoroutineScope)
             )
             Spacer(modifier = Modifier.padding(10.dp))
             Text(
-                color = Color.White, text = "Settings", fontSize = 20.sp,fontFamily = FontFamily.SansSerif,
+                color = Color.White, text = "Log Out", fontSize = 20.sp,fontFamily = FontFamily.SansSerif,
                 modifier = Modifier.padding(20.dp, 5.dp)
             )
         } }
