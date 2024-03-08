@@ -44,7 +44,7 @@ fun EditProfile(){
 
             TextField(
                 value = textState3,
-                onValueChange = { textState = it },
+                onValueChange = { textState3 = it },
                 label = { Text("Name") },
                 modifier = Modifier
                     .padding(start = 24.dp, end = 24.dp, top = 35.dp)
@@ -61,7 +61,7 @@ fun EditProfile(){
 
             TextField(
                 value = textState4,
-                onValueChange = { textState = it },
+                onValueChange = { textState4 = it },
                 label = { Text("Age") },
                 modifier = Modifier
                     .padding(start = 24.dp, end = 24.dp, top = 35.dp)

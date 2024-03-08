@@ -8,6 +8,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.tooling.preview.Preview
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -30,6 +31,12 @@ fun Home()
             TabBar()
         }
     }}
+
+@Preview(showBackground = true)
+@Composable
+fun HomePrev(){
+    Home()
+}
 
 
 
