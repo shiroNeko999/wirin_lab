@@ -23,15 +23,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.ayush.work.ui.theme.ProfileBox
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @OptIn( ExperimentalMaterialApi::class)
 @Composable
-fun DrawerPanel(scaffoldState: ScaffoldState,scope: CoroutineScope)
+fun DrawerPanel(
+    scaffoldState: ScaffoldState,
+    scope: CoroutineScope,
+    name: String,
+    navController: NavController
+)
 { var context = LocalContext.current
     var wow=0
+    var age="none"
+    var email="none"
     LazyColumn(modifier=Modifier.fillMaxSize().background(
         brush = GradientBackgroundBrush(
             isVerticalGradient = true,
@@ -43,7 +51,7 @@ fun DrawerPanel(scaffoldState: ScaffoldState,scope: CoroutineScope)
                 Color(0xE220192E),
             )
         ))){
-        item{ ProfileBox(userName = "Ayush", modifier=Modifier.padding(16.dp))}
+        item{ ProfileBox(userName = name, modifier=Modifier.padding(16.dp))}
         item { Row(modifier = Modifier.fillMaxWidth()
             .background(color = Color.Transparent)
             .clickable(onClick = { wow++ })
@@ -58,7 +66,7 @@ fun DrawerPanel(scaffoldState: ScaffoldState,scope: CoroutineScope)
                 Spacer(modifier = Modifier.padding(10.dp))
                 Text(
                     color = Color.White, text = "Your Profile", fontSize = 20.sp,fontFamily = FontFamily.SansSerif,
-                    modifier = Modifier.padding(20.dp, 5.dp)
+                    modifier = Modifier.padding(20.dp, 5.dp).clickable(onClick = {navController.navigate("Your Profile/$name/$age/$email")})
                 )
             }
 
@@ -78,7 +86,7 @@ fun DrawerPanel(scaffoldState: ScaffoldState,scope: CoroutineScope)
             Spacer(modifier = Modifier.padding(10.dp))
             Text(
                 color = Color.White, text = "Log Out", fontSize = 20.sp,fontFamily = FontFamily.SansSerif,
-                modifier = Modifier.padding(20.dp, 5.dp)
+                modifier = Modifier.padding(20.dp, 5.dp).clickable(onClick = {navController.navigate("Login")})
             )
         } }
       }

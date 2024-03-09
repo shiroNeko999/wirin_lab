@@ -18,7 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
-fun TopBar(scaffoldState: ScaffoldState,scope: CoroutineScope)
+fun TopBar(scaffoldState: ScaffoldState, scope: CoroutineScope)
 {
     Row(modifier = Modifier.background(color = Color.Black)
         .fillMaxWidth()) {

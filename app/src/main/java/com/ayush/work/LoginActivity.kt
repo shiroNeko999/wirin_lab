@@ -40,7 +40,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -51,16 +50,14 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.FirebaseUser
-import com.ayush.work.AuthResult
 
 
 sealed class AuthResult {
@@ -84,20 +81,20 @@ class LoginActivity : ComponentActivity() {
 
 
         setContent {
-loginscreen()
+
         }
     }
 }
 
 
 @Composable
-fun loginscreen(){
+fun loginscreen(navController: NavHostController) {
     Column(modifier= Modifier
         .fillMaxSize()
         .background(Color.Black)) {
         LazyColumn{
             item { DesignTop()
-                DesignBottom() }
+                DesignBottom(navController) }
         }
 
     }
@@ -140,14 +137,14 @@ fun DesignTop(){
 }
 
 @Composable
-fun DesignBottom(){
+fun DesignBottom(navController: NavHostController){
     val auth = FirebaseAuth.getInstance()
     val context = LocalContext.current
 
     var authResult by remember { mutableStateOf<AuthResult?>(null) }
 
     var passwordVisible by remember { mutableStateOf(false) }
-
+    var name="GuestUser"
     Column(modifier= Modifier
         .background(Color.Black)
         .fillMaxSize()
@@ -178,6 +175,7 @@ fun DesignBottom(){
                             if (user != null) {
                                 authResult = AuthResult.Success(user)
                                 Toast.makeText(context, "Logged in", Toast.LENGTH_SHORT).show()
+                                navController.navigate("Home/$name")
                             } else {
                                 // Handle the case where the user is null
                                 Toast.makeText(context, "Enter your email adress", Toast.LENGTH_SHORT).show()
@@ -200,7 +198,7 @@ fun DesignBottom(){
 
         val onCreateAccountClick: ()-> Unit = {
 
-            //create account pr click krne pr kya dikhega
+            navController.navigate("Register Screen")
 
         }
         TextField(
@@ -388,7 +386,7 @@ fun MetaSignInButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    loginscreen()
+
 
 }
 //@Preview(showBackground = true)

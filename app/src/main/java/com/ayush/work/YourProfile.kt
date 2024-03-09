@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
 @Composable
 fun ProfileUp(justtext:String){
@@ -159,7 +160,7 @@ fun ProfileDown(Name:String,EmailID:String,Age:String){
 }
 
 @Composable
-fun ProfileOptions(){
+fun ProfileOptions(navController: NavHostController,name:String) {
     Box(modifier = Modifier.fillMaxSize()){
 
     Card(modifier= Modifier
@@ -186,19 +187,29 @@ fun ProfileOptions(){
                 .height(20.dp)
                 .fillMaxWidth())
             Text(text = "Edit Your Profile", color = lol, fontSize =24.sp, fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.SemiBold, modifier = Modifier.clickable {lol=Color.White
-            //nav function})
-        })
+                navController.navigate("Edit Profile")})
+
+
             Spacer(modifier = Modifier
                 .height(45.dp)
                 .fillMaxWidth())
             Text(text = "Change your Password", color = lol, fontSize =24.sp, fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.SemiBold, modifier = Modifier.clickable {lol=Color.White
-                //nav function})
+                navController.navigate("Change Password")
             })
+
+            Spacer(modifier = Modifier
+                .height(45.dp)
+                .fillMaxWidth())
+            Text(text = "Change your Password", color = lol, fontSize =24.sp, fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.SemiBold, modifier = Modifier.clickable {lol=Color.White
+                navController.navigate("Home/$name")
+            })
+
+
     }}
 }}
 
 @Composable
-fun Profile(){
+fun Profile(name: String?, age: String?, emailID: String?, navController: NavHostController){
     Column(modifier= Modifier
         .fillMaxSize()
         .background(Color.Black)) {
@@ -206,16 +217,24 @@ fun Profile(){
         Spacer(modifier = Modifier
             .height(20.dp)
             .fillMaxWidth())
-        ProfileDown("Ayush", "vatsayush999@gmail.com","20")
+        if (emailID != null) {
+            if (name != null) {
+                if (age != null) {
+                    ProfileDown(name, emailID,age)
+                }
+            }
+        }
         Spacer(modifier = Modifier
             .height(40.dp)
             .fillMaxWidth())
-        ProfileOptions()
+        if (name != null) {
+            ProfileOptions(navController,name=name)
+        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun ProfileView(){
-    Profile()
+
 }

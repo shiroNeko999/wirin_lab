@@ -48,30 +48,30 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.google.firebase.auth.FirebaseAuth
 
 class SignupActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            signupscreen()
+
                 }
             }
         }
 
 @Composable
-fun signupscreen(){
+fun signupscreen(navController: NavHostController) {
     Column(modifier= Modifier
         .fillMaxSize()
         .background(Color.Black)) {
         LazyColumn{
             item { DesignTop1()
-            DesignBottom1()}
+            DesignBottom1(navController)}
 
         }
 
@@ -106,7 +106,7 @@ fun DesignTop1(){
 }
 
 @Composable
-fun DesignBottom1(){
+fun DesignBottom1(navController: NavHostController) {
     var passwordVisible by remember { mutableStateOf(false) }
 
     Column(modifier= Modifier
@@ -134,13 +134,14 @@ fun DesignBottom1(){
 
             // Call the sign-up function with email and password
             signUpWithEmailAndPassword(email, password)
+            navController.navigate("Login")
 
         }
 
         val onSigninClick: ()-> Unit = {
 
             //create account pr click krne pr kya dikhega
-
+            navController.navigate("Login")
 
         }
 
@@ -339,7 +340,7 @@ fun MetaSignupButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview2() {
-    signupscreen()
+
 }
 private fun signUpWithEmailAndPassword(email: String, password: String) {
     val auth = FirebaseAuth.getInstance()

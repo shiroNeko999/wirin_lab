@@ -9,10 +9,11 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Home()
+fun Home(name: String?, navController:NavController)
 {val scaffoldState= rememberScaffoldState()
     val scope = rememberCoroutineScope()
     Log.d(ContentValues.TAG, "distance travelled  " + MyClass.distance)
@@ -20,7 +21,11 @@ fun Home()
     Scaffold(
         scaffoldState = scaffoldState,
 
-        drawerContent = { DrawerPanel(scaffoldState = scaffoldState, scope =scope )},
+        drawerContent = {
+            if (name != null) {
+                DrawerPanel(scaffoldState = scaffoldState, scope =scope, name=name, navController)
+            }
+        },
         topBar = {
            TopBar(scaffoldState=scaffoldState,scope = scope)
         }
@@ -35,7 +40,7 @@ fun Home()
 @Preview(showBackground = true)
 @Composable
 fun HomePrev(){
-    Home()
+
 }
 
 

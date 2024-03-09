@@ -24,10 +24,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 
 
 @Composable
-fun ChangePassword(){
+fun ChangePassword(navController: NavHostController) {
     Column(modifier= Modifier
         .background(Color.Black)
         .fillMaxSize()
@@ -37,9 +38,8 @@ fun ChangePassword(){
 
 
         val onChangePasswordButton: () -> Unit = {
-            //Sign in vala function yaha daalna
-            var hey=0
-            hey+=1
+            navController.navigate("Login")
+
         }
 
 
@@ -108,12 +108,12 @@ fun ChangePasswordButton(onClick: () -> Unit) {
 }
 
 @Composable
-fun finalChangePassword(){
+fun finalChangePassword(navController: NavHostController) {
     Column(modifier= Modifier
         .fillMaxSize()
         .background(Color.Black)) {
         ProfileUp(justtext = "Change\nPassword")
-        ChangePassword()
+        ChangePassword(navController)
     }
 
 }
@@ -121,5 +121,5 @@ fun finalChangePassword(){
 @Preview(showBackground = true)
 @Composable
 fun PasswordPrvw(){
-    finalChangePassword()
+
 }

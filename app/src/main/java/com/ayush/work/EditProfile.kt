@@ -24,9 +24,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 
 @Composable
-fun EditProfile(){
+fun EditProfile(navController: NavHostController) {
         Column(modifier= Modifier
             .background(Color.Black)
             .fillMaxSize()
@@ -36,9 +37,7 @@ fun EditProfile(){
             var textState3 by remember {mutableStateOf(TextFieldValue())}
             var textState4 by remember {mutableStateOf(TextFieldValue())}
             val onUpdateProfile: () -> Unit = {
-                //Sign in vala function yaha daalna
-                var hey=0
-                hey+=1
+                navController.navigate("Your Profile/$textState3/$textState4/$textState")
 
             }
 
@@ -125,10 +124,10 @@ fun UpdateProfile(onClick: () -> Unit) {
 }
 
 @Composable
-fun finalEditProfile(){
+fun finalEditProfile(navController: NavHostController) {
     Column(modifier=Modifier.fillMaxSize().background(Color.Black)) {
         ProfileUp(justtext = "Edit\nProfile")
-        EditProfile()
+        EditProfile(navController)
     }
 
 }
@@ -136,6 +135,6 @@ fun finalEditProfile(){
 @Preview(showBackground = true)
 @Composable
 fun EditPrvw(){
-    finalEditProfile()
+
 }
 

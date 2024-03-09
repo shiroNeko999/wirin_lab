@@ -214,7 +214,7 @@ class MainActivity : ComponentActivity() {
 
 
         setContent {
-            Home()
+            Nav()
         }
     }
 }
