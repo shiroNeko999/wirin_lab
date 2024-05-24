@@ -129,7 +129,7 @@ class MainActivity : ComponentActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                val value = snapshot.getValue<String>()
+                val value = snapshot.getValue<Int>()
                 battery= value.toString()
                 //creating object
                 MyClass.charge= battery
